@@ -50,7 +50,7 @@ def main():
     input_apellido.send_keys("Rodríguez Torreira")
 
     input_codigopostal = driver.find_element(By.ID, "postal-code")
-    input_codigopostal.send_keys("15821")
+    input_codigopostal.send_keys("15825")
 
     boton5 = driver.find_element(By.ID, "continue")
     boton5.click()

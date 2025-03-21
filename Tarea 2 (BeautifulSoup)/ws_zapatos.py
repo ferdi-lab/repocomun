@@ -3,10 +3,10 @@ from bs4 import BeautifulSoup
 
 url = "https://listado.mercadolibre.com.ar/ropa-accesorios/calzado/zapatillas/zapatillas_NoIndex_True#D[A:zapatillas,on]"
 
-response = requests.get(url)
+respuesta = requests.get(url)
 
-if response.status_code == 200:
-    soup = BeautifulSoup(response.text, 'html.parser')
+if respuesta.status_code == 200:
+    soup = BeautifulSoup(respuesta.text, 'html.parser')
     productos = soup.find_all('div', class_="andes-card poly-card poly-card--grid-card andes-card--flat andes-card--padding-0 andes-card--animated")
     print(len(productos))
 
@@ -18,4 +18,4 @@ if response.status_code == 200:
         if precio:
             print(precio.text.strip())
 else:
-    print ("Error al cargar la web, código:", response.status_code)
+    print ("Error al cargar la web, código:", respuesta.status_code)

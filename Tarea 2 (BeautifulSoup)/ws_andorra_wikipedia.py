@@ -3,8 +3,8 @@ from bs4 import BeautifulSoup
 
 url = "https://es.wikipedia.org/wiki/Andorra"
 
-resp = requests.get(url)
-soup = BeautifulSoup(resp.text, "html.parser")
+respuesta = requests.get(url)
+soup = BeautifulSoup(respuesta.text, "html.parser")
 
 parrafos = soup.find_all('p')
 primer_parrafo = parrafos[1]

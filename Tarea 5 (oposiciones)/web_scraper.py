@@ -5,7 +5,7 @@ import pandas as pd
 
 
 # Leer el excel
-archivo = 'D:\Escritorio\Repositorio1\Tarea 5 (oposiciones)\TablaAyuntamientosOposiciones.xlsx'
+archivo = 'D:\Escritorio\Repocomun\Tarea 5 (oposiciones)\TablaAyuntamientosOposiciones.xlsx'
 df = pd.read_excel(archivo, sheet_name='Hoja 1')
 print(df)
 
@@ -49,7 +49,7 @@ for element in soup.find_all(["div", "h3"], class_=["brand-color", "item-title"]
     elif element.name == "h3" and "item-title" in element.get("class", []):
         oposicion = element.text.strip()
         if año:
-            oposiciones.append((oposicion, año)) #crear lista con los datos de cada oposición
+            oposiciones.append((oposicion, año, "36.72016, -4.42034")) #crear lista con los datos de cada oposición
 
 
 
@@ -59,16 +59,16 @@ conn = sqlite3.connect('oposiciones.db')
 c = conn.cursor()
 
 # Crear la tabla de las oposiciones
-c.execute("""
-CREATE TABLE IF NOT EXISTS oposiciones (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    Oposición TEXT NOT NULL,
-    Año TEXT NOT NULL
-)
-""")
+# c.execute("""
+# CREATE TABLE IF NOT EXISTS oposiciones (
+#     id INTEGER PRIMARY KEY AUTOINCREMENT,
+#     Oposición TEXT NOT NULL,
+#     Año TEXT NOT NULL
+# )
+# """)
 
 # Insertar los datos
-c.executemany("INSERT INTO oposiciones (Oposición, año) VALUES (?, ?)", oposiciones)
+c.executemany("INSERT INTO oposiciones (Oposición, Año, Coordenadas) VALUES (?, ?, ?)", oposiciones)
 
 conn.commit()
 conn.close()

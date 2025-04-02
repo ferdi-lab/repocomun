@@ -1,7 +1,6 @@
 import fitz
 import re
 import threading
-import os
 
 
 boletin_estatal = fitz.open(r"D:\Escritorio\Repocomun\Tarea 6 (BOE)\oposiciones.pdf")
@@ -34,7 +33,3 @@ hilo2.join()
 # Cerrar y eliminar los archivos
 boletin_estatal.close()
 boletin_autonomico.close()
-
-os.remove("D:\Escritorio\Repocomun\Tarea 6 (BOE)\oposiciones.pdf")
-print("Archivos PDF eliminados correctamente.")
-

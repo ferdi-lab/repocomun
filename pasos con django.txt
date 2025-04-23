@@ -1,0 +1,50 @@
+1.-   python manage.py makemigrations monitor
+
+2.-   python manage.py migrate
+
+3.-   python manage.py runserver
+
+4.-   http://127.0.0.1:8000
+
+-----------------------------------------Explicacion de como funciona ------------------------------------------------------------
+Sí, si hubiera algún cambio en las URLs que estás monitoreando, la interfaz te lo mostrará de la siguiente forma:
+
+Fila resaltada:
+Las filas de las URLs que han cambiado serán resaltadas con un color de fondo diferente. Esto te permitirá ver rápidamente cuáles URLs han tenido modificaciones.
+
+Columna "¿Cambios?":
+Verás un True o False en esta columna, indicando si hubo un cambio detectado.
+
+Columna "Acción":
+Habrá un botón que dice "Hecho" en aquellas URLs que han cambiado, y podrás hacer clic en él para marcar esa URL como "completada" o "revisada".
+
+📊 Ejemplo visual:
+Imagina que en la tabla hay una fila como esta:
+
+
+URL	                                    Última comprobación	     ¿Cambios?	  ¿Hecho?	Acción
+https://www.example.com	                    2025-04-20 14:30:00	       True	   False	[Hecho]
+
+En este caso:
+
+La URL ha cambiado.
+
+El botón "Hecho" estará disponible para que puedas marcarlo como revisado.
+
+¿Cómo se detectan los cambios?
+El sistema compara el contenido de la URL (usando un hash MD5).
+
+Si el contenido ha cambiado respecto a la última vez que fue verificado, marcará esa URL como "cambio".
+
+Cada vez que se hace una verificación, el sistema calcula de nuevo el hash para esa URL y lo compara.
+
+📌 ¿Cómo funciona el sistema de comprobación?
+Cuando haces clic en el botón "Comprobar cambios", el sistema:
+
+Verifica todas las URLs que tienes registradas.
+
+Compara su contenido con la última vez que se comprobó.
+
+Si detecta que el contenido de la URL ha cambiado, actualiza la base de datos para reflejar que esa URL tiene cambios.
+
+Si ya tienes algunas URLs agregadas y quieres probar el sistema, simplemente haz clic en el botón para "Comprobar cambios" y verás si alguna URL tiene cambios.
